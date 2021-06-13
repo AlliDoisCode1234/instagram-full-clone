@@ -58,16 +58,6 @@ function App() {
         // the user has logged in...
         console.log(authUser);
         setUser(authUser);
-
-        if (authUser.displayName) {
-          // don't update username
-        } else {
-          // if we just created a new user
-          return authUser.updateProfile({
-            displayName: username,
-          })
-        }
-
       } else {
         // the user has logged out...
         setUser(null)
@@ -115,7 +105,12 @@ const signUp = (event) => {
 
   auth
   .createUserWithEmailAndPassword(email, password)
+  .then((authUser) => {
+    return authUser.user.updateProfile({
+      displayName: username,
+    })
   .catch((error) => alert(error.message))
+  })
 }
 
 
@@ -166,7 +161,11 @@ const signUp = (event) => {
           className="app__headerImage" />
       </div>
 
-      <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Sign Up</Button>
+      {user ? (
+        <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>Log Out</Button>
+      ) : (
+        <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Sign Up</Button>
+      )}
 
       {
         posts.map(({ id, post }) => (

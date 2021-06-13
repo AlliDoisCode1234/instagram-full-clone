@@ -227,8 +227,8 @@ const signIn = (event) => {
         }
       </div>
       <InstagramEmbed
-        url='https://instagr.am/p/Zw9o4/
-        '
+        className="app__embed"
+        url='https://www.instagram.com/p/Ytlfl/'
         clientAccessToken='123|456'
         maxWidth={320}
         hideCaption={false}

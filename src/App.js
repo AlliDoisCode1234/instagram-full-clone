@@ -206,7 +206,7 @@ const signIn = (event) => {
           alt="app logo" 
           className="app__headerImage" 
         />
-        
+
         {user ? (
           <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>Log Out</Button>
         ) : (
@@ -217,12 +217,13 @@ const signIn = (event) => {
         )}
       </div>
 
-
-      {
-        posts.map(({ id, post }) => (
-          <Post key={id} username={post.username} caption={post.caption} imageURL={post.imageURL} />
-        ))
-      }
+      <div className="app__posts">
+        {
+          posts.map(({ id, post }) => (
+            <Post key={id} username={post.username} caption={post.caption} imageURL={post.imageURL} />
+          ))
+        }
+      </div>
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />

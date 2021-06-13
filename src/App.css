@@ -4,7 +4,10 @@
 
 .app {
   background-color: #fafafa;
-  height: 100vh;
+}
+
+.app__posts {
+  padding: 20px;
 }
 
 .app__header {
@@ -14,6 +17,10 @@
   display: flex;
   border-bottom: 1px solid lightgray;
   justify-content: space-between;
+}
+
+.app__headerImage {
+  object-fit: contain;
 }
 
 .app___signup {

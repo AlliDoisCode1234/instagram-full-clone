@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Post from "./components/Post"
-import { db } from "./firebase"
+import { db, auth } from "./firebase"
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
@@ -46,8 +46,45 @@ function App() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null);
 
   // useEffect runs a piece of code based on a specific condition
+
+  // SignUp
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // the user has logged in...
+        console.log(authUser);
+        setUser(authUser);
+
+        if (authUser.displayName) {
+          // don't update username
+        } else {
+          // if we just created a new user
+          return authUser.updateProfile({
+            displayName: username,
+          })
+        }
+
+      } else {
+        // the user has logged out...
+        setUser(null)
+      }
+    })
+
+    return () => {
+      // perform some cleanup actions before you fire useEffect
+      unsubscribe();
+    }
+
+
+  }, [user, username]);
+
+
+
+  // Get Posts from DB
   useEffect(() => {
     // this is where the code runs
     // once when the app loads
@@ -73,7 +110,13 @@ function App() {
   }, []);
 
   
+const signUp = (event) => {
+  event.preventDefault();
 
+  auth
+  .createUserWithEmailAndPassword(email, password)
+  .catch((error) => alert(error.message))
+}
 
 
   return ( 
@@ -84,11 +127,13 @@ function App() {
         onClose={() => setOpen(false)}
       >
         <div style={modalStyle} className={classes.paper}>
-          <center>
-            <img 
-            src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
-            alt="app logo" 
-            className="app__headerImage" />
+          <form className="app___signup">
+            <center>
+              <img 
+              src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
+              alt="app logo" 
+              className="app__headerImage" />
+            </center>
             <Input 
               placeholder="username"
               type="text"
@@ -107,8 +152,8 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Log In</Button>
-          </center>
+            <Button variant="outlined" color="primary" onClick={signUp}>Sign Up</Button>
+          </form>
         </div>
 
       </Modal>

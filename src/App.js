@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Post from "./components/Post"
+import { db } from "./firebase"
 
 function App() {
-  const [posts, setPosts] = useState([
-    {
-      username: "josiahjames",
-      caption: "WOW it works",
-      imageURL: "https://www.poodled.com/wp-content/uploads/2019/07/2.-photo-1550948537-130a1ce83314.jpg"
-    },
-    {
-      username: "josiahjames",
-      caption: "WOW it works",
-      imageURL: "https://www.poodled.com/wp-content/uploads/2019/07/2.-photo-1550948537-130a1ce83314.jpg"
-    }
-  ]);
+  const [posts, setPosts] = useState([]);
+
+  // useEffect runs a piece of code based on a specific condition
+  useEffect(() => {
+    // this is where the code runs
+    // once when the app loads
+    // and every time posts changes
+    db.collection('posts').onSnapshot(snapshot => {
+      // every time a new post is added, this code fires...
+      // takes a "snapshot" of the collection and changes
+      setPosts(snapshot.docs.map(doc => doc.data()));
+    })
+  }, []);
 
   return ( 
     // BEM naming convention
@@ -31,24 +33,7 @@ function App() {
         <Post username={post.username} caption={post.caption} imageURL={post.imageURL} />
       ))
     }
-    <Post 
-      imageURL="https://www.petlandflorida.com/wp-content/uploads/2021/01/Petland_Florida_Toy_Poodle.jpg" 
-      username="josiahjames"
-      caption="WOW it works"
-    />
-    <Post 
-      imageURL="https://www.poodled.com/wp-content/uploads/2019/07/2.-photo-1550948537-130a1ce83314.jpg" 
-      username="clementematthew"
-      caption="minHeaps and maxHeaps will save your life!"
-    />
-    <Post 
-      imageURL="https://redandapricotpoodles.com/wp-content/uploads/2020/07/questions-to-ask-your-poodle-breeder--1024x731.jpg" 
-      username="leonnoel"
-      caption="Google Better!"
-    />
-     {/* Posts */}
-     {/* Posts */}
-
+ 
 
     </div>
   );

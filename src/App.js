@@ -43,6 +43,7 @@ function App() {
 
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
+  const [openSignIn, setOpenSignIn] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -104,13 +105,25 @@ const signUp = (event) => {
   event.preventDefault();
 
   auth
-  .createUserWithEmailAndPassword(email, password)
-  .then((authUser) => {
-    return authUser.user.updateProfile({
-      displayName: username,
+    .createUserWithEmailAndPassword(email, password)
+    .then((authUser) => {
+      return authUser.user.updateProfile({
+        displayName: username,
+      })
     })
-  .catch((error) => alert(error.message))
-  })
+    .catch((error) => alert(error.message))
+
+    setOpen(false)
+}
+
+const signIn = (event) => {
+  event.preventDefault();
+
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .catch((error) => alert(error.message))
+
+  setOpenSignIn(false)
 }
 
 
@@ -150,6 +163,35 @@ const signUp = (event) => {
             <Button variant="outlined" color="primary" onClick={signUp}>Sign Up</Button>
           </form>
         </div>
+      </Modal>
+
+      <Modal
+        open={openSignIn}
+        onClose={() => setOpenSignIn(false)}
+      >
+        <div style={modalStyle} className={classes.paper}>
+          <form className="app___signup">
+            <center>
+              <img 
+              src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
+              alt="app logo" 
+              className="app__headerImage" />
+            </center>
+            <Input 
+              placeholder="email"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input 
+              placeholder="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button variant="outlined" color="primary" onClick={signIn}>Sign In</Button>
+          </form>
+        </div>
 
       </Modal>
 
@@ -164,7 +206,10 @@ const signUp = (event) => {
       {user ? (
         <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>Log Out</Button>
       ) : (
-        <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Sign Up</Button>
+        <div className="app__loginContainer">
+          <Button variant="outlined" color="primary" onClick={() => setOpenSignIn(true)}>Sign In</Button>
+          <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Sign Up</Button>
+        </div>
       )}
 
       {

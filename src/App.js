@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { Input } from '@material-ui/core';
+import ImageUpload from './components/ImageUpload'
 
 
 
@@ -80,7 +81,7 @@ function App() {
     // this is where the code runs
     // once when the app loads
     // and every time posts changes
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       // every time a new post is added, this code fires...
       // takes a "snapshot" of the collection and changes
 
@@ -130,6 +131,9 @@ const signIn = (event) => {
   return ( 
     // BEM naming convention
     <div className="App">
+
+      
+
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -200,23 +204,31 @@ const signIn = (event) => {
         <img 
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
           alt="app logo" 
-          className="app__headerImage" />
+          className="app__headerImage" 
+        />
+        
+        {user ? (
+          <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>Log Out</Button>
+        ) : (
+          <div className="app__loginContainer">
+            <Button variant="outlined" color="primary" onClick={() => setOpenSignIn(true)}>Sign In</Button>
+            <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Sign Up</Button>
+          </div>
+        )}
       </div>
 
-      {user ? (
-        <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>Log Out</Button>
-      ) : (
-        <div className="app__loginContainer">
-          <Button variant="outlined" color="primary" onClick={() => setOpenSignIn(true)}>Sign In</Button>
-          <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Sign Up</Button>
-        </div>
-      )}
 
       {
         posts.map(({ id, post }) => (
           <Post key={id} username={post.username} caption={post.caption} imageURL={post.imageURL} />
         ))
       }
+
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ): (
+        <h3>Sorry you need to login to upload</h3>
+      )}
   
 
     </div>

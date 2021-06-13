@@ -1,0 +1,21 @@
+[debug] [2021-06-13T21:50:04.601Z] ----------------------------------------------------------------------
+[debug] [2021-06-13T21:50:04.603Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Josiah\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-06-13T21:50:04.603Z] CLI Version:   9.12.1
+[debug] [2021-06-13T21:50:04.603Z] Platform:      win32
+[debug] [2021-06-13T21:50:04.603Z] Node Version:  v14.5.0
+[debug] [2021-06-13T21:50:04.604Z] Time:          Sun Jun 13 2021 17:50:04 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-06-13T21:50:04.604Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-06-13T21:50:04.609Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-06-13T21:50:04.609Z] > authorizing via signed-in user (josiah.james.fowler@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Josiah\Desktop\Projects\instagram-full-clone\instagram-full-clone
+

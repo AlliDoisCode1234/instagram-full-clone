@@ -7,6 +7,8 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { Input } from '@material-ui/core';
 import ImageUpload from './components/ImageUpload'
+import InstagramEmbed from 'react-instagram-embed';
+
 
 
 
@@ -224,6 +226,22 @@ const signIn = (event) => {
           ))
         }
       </div>
+      <InstagramEmbed
+        url='https://instagr.am/p/Zw9o4/
+        '
+        clientAccessToken='123|456'
+        maxWidth={320}
+        hideCaption={false}
+        containerTagName='div'
+        protocol=''
+        injectScript
+        onLoading={() => {}}
+        onSuccess={() => {}}
+        onAfterRender={() => {}}
+        onFailure={() => {}}
+      />
+
+
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />

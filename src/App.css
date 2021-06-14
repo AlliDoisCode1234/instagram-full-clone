@@ -18,12 +18,15 @@
 }
 
 .app__header {
+  position: sticky;
+  top: 0;
   background-color: white;
   padding: 20px;
   object-fit: contain;
   display: flex;
   border-bottom: 1px solid lightgray;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .app__headerImage {

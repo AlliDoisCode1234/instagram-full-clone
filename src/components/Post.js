@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../components/Post.css'
 import Avatar from "@material-ui/core/Avatar"
 import { db } from "../firebase";
+import firebase from "firebase";
 
 const Post = ({ postId, user, imageURL, username, caption }) => {
     const [comments, setComments] = useState([]);
@@ -18,6 +19,7 @@ const Post = ({ postId, user, imageURL, username, caption }) => {
                 .collection("posts")
                 .doc(postId)
                 .collection("comments")
+                .orderBy('timestamp', 'desc')
                 .onSnapshot((snapshot) => {
                     setComments(snapshot.docs.map((doc) => doc.data()));
                 });

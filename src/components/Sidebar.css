@@ -1,6 +1,7 @@
 .sidebar {
   padding: 20px;
   border: 1px solid lightgray;
+  position: fixed;
 }
 
 .sidebar__headerContainer {

@@ -6,8 +6,6 @@
 .sidebar__headerContainer {
   display: flex;
   align-items: center;
-
-  justify-content: space-between;
 }
 
 .sidebar__headerUsername {
@@ -58,16 +56,28 @@
 
 .sidebar__footerMenu {
   display: flex;
-  width: 100%;
+  max-width: 50%;
+  margin-top: 10%;
+  margin-bottom: 4%;
 }
 .sidebar__footerMenu > li {
   list-style: none;
   color: #c7c7c7;
-  flex-wrap: wrap;
-  overflow-wrap: break-word;
+  font-size: 0.75rem;
+  width: 100%;
 }
 
 .sidebar__footerMenu > li::after {
   content: "\00B7";
   margin: 0 0.25em 0 0.25em;
+}
+
+.sidebar__footerMenu > li:last-child::after {
+  content: none;
+  margin: 0;
+}
+
+.sidebar__footerSignature > span {
+  font-size: 0.8rem;
+  color: #c7c7c7;
 }

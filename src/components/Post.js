@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../components/Post.css'
 import Avatar from "@material-ui/core/Avatar"
 
-const Post = ({ imageURL, username, caption }) => {
+const Post = ({ postId, imageURL, username, caption }) => {
+    const [comments, setComments] = useState();
+
+
+    // nested listener on each post 
+    // waiting for a comment
+    // then going into the db to grab the comment
+    useEffect(() => {
+        let unsubscribe;
+        if (postId) {
+            unsubscribe = db
+                .collection("posts")
+                .doc(postId)
+                .collection("comments")
+                .onSnapshot((snapshot) => {
+                    setComments(snapshot.docs.map((doc) => doc.data()));
+                });
+        }
+        return () => {
+            unsubscribe();
+        }
+    }, [postId]);
     return (
         <div className="post">
             <div className="post__header">

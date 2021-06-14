@@ -42,9 +42,6 @@ const Sidebar = () => {
                     <li className="footer__link">Privacy</li>
                     <li className="footer__link">Terms</li>
                     <li className="footer__link">Locations</li>
-                    <li className="footer__link">Top Accounts</li>
-                    <li className="footer__link">Hashtags</li>
-                    <li className="footer__link">Language</li>
                 </div>
                 <div className="sidebar__footerSignature">
                     <span>© 2021 INSTAGRAM FROM FACEBOOK FAKE</span>

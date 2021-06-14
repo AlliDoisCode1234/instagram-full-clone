@@ -1,0 +1,8 @@
+.suggestedUser {
+  display: flex;
+}
+
+.suggestedUser__user {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,57 @@
+.sidebar {
+  padding: 20px;
+  border: 1px solid lightgray;
+}
+
+.sidebar__headerContainer {
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.sidebar__headerUsername {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.sidebar__headerUsername > h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sidebar__headerUsername > h4 {
+  font-size: 0.9rem;
+  color: gray;
+  font-weight: normal;
+}
+
+.sidebar__switchUser {
+  margin-left: 70px;
+}
+
+.sidebar__switchUser {
+  font-size: 0.8rem;
+  color: #0095f6;
+  font-weight: 500;
+}
+
+.sidebar__suggestionsContainer {
+  display: flex;
+  margin-bottom: 5%;
+  margin-top: 7%;
+}
+
+.sidebar__suggestionsContainer > h4 {
+  color: #8e8e8e;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.sidebar__suggestionsContainer > span {
+  margin-left: 105px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}

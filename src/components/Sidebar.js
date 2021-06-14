@@ -1,26 +1,33 @@
 import React from 'react'
 import '../components/Sidebar.css'
 import SuggestedUser from './SuggestedUser'
+import Avatar from "@material-ui/core/Avatar"
+
 
 const Sidebar = () => {
     return (
         <div className="sidebar">
             <div className="sidebar__headerContainer">
-                <img src="" alt="" />
-                <h3>Username</h3>
-                <h4>User's name</h4>
-                <span>Switch</span>
+
+                <Avatar 
+                    className="post__avatar"
+                    alt="JosiahJames"
+                    src="/static/images/avatar/1/jpg"
+                />
+                <div className="sidebar__headerUsername">
+                    <h3>josiahjames617</h3>
+                    <h4>Josiah James</h4>
+                </div>
+                <div className="sidebar__switchUser">
+                    <span>Switch</span>
+                </div>
             </div>
            <div className="sidebar__suggestionsContainer">
                <h4>Suggestions For You</h4>
-               <span>Follow</span>
-               <SuggestedUser />
+               <span>See All</span>
            </div>
-            {/* sidebar__suggestionsContainer */}
-                {/* Suggestions For You */}
-                {/* See All Suggestions Link */}
-                    {/* suggestedUser */}
-                    {/* follow suggestedUser Link */}
+           <SuggestedUser />
+            
             {/* Footer */}
 
 

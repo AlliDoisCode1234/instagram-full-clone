@@ -6,6 +6,11 @@
   background-color: #fafafa;
 }
 
+.app__mainContainer {
+  width: 100%;
+  background-color: rgb(250, 250, 250);
+}
+
 .app__posts {
   padding: 20px;
 }

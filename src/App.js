@@ -7,7 +7,8 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { Input } from '@material-ui/core';
 import ImageUpload from './components/ImageUpload'
-import InstagramEmbed from 'react-instagram-embed';
+// import InstagramEmbed from 'react-instagram-embed';
+import Sidebar from './components/Sidebar'
 
 
 
@@ -218,36 +219,40 @@ const signIn = (event) => {
           </div>
         )}
       </div>
+      <div className="app__mainContainer">
+        <div className="app__posts">
+          {
+            posts.map(({ id, post }) => (
+              <Post key={id} username={post.username} caption={post.caption} imageURL={post.imageURL} />
+            ))
+          }
+        </div>
+        {/* <InstagramEmbed
+          className="app__embed"
+          url='https://www.instagram.com/p/Ytlfl/'
+          clientAccessToken='123|456'
+          maxWidth={320}
+          hideCaption={false}
+          containerTagName='div'
+          protocol=''
+          injectScript
+          onLoading={() => {}}
+          onSuccess={() => {}}
+          onAfterRender={() => {}}
+          onFailure={() => {}}
+        /> */}
 
-      <div className="app__posts">
-        {
-          posts.map(({ id, post }) => (
-            <Post key={id} username={post.username} caption={post.caption} imageURL={post.imageURL} />
-          ))
-        }
+        <Sidebar />
+
+
+
+        {user?.displayName ? (
+          <ImageUpload username={user.displayName} />
+        ): (
+          <h3>Sorry you need to login to upload</h3>
+        )}
       </div>
-      <InstagramEmbed
-        className="app__embed"
-        url='https://www.instagram.com/p/Ytlfl/'
-        clientAccessToken='123|456'
-        maxWidth={320}
-        hideCaption={false}
-        containerTagName='div'
-        protocol=''
-        injectScript
-        onLoading={() => {}}
-        onSuccess={() => {}}
-        onAfterRender={() => {}}
-        onFailure={() => {}}
-      />
 
-
-
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ): (
-        <h3>Sorry you need to login to upload</h3>
-      )}
   
 
     </div>

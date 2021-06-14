@@ -1,8 +1,8 @@
 import React from 'react'
-import './SuggestedUser'
+import './SuggestedUser.css'
 import Avatar from "@material-ui/core/Avatar"
 
-const SuggestedUser = () => {
+const SuggestedUser = ({ username, follow }) => {
     return (
         <div className="suggestedUser">
             <div className="suggestedUser__image">
@@ -13,8 +13,8 @@ const SuggestedUser = () => {
                 />
             </div>
             <div className="suggestedUser__user">
-                <h4>Suggested User Username</h4>
-                <span>Follows you</span>
+                <h4>{username}</h4>
+                <span>{follow}</span>
             </div>
             <div className="suggestedUser__follow">
                 <h4>Follow</h4>

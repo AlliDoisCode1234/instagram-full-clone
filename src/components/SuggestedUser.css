@@ -1,8 +1,43 @@
 .suggestedUser {
   display: flex;
+  padding: 7px 0;
+}
+.suggestedUser__image {
+  display: flex;
 }
 
 .suggestedUser__user {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.suggestedUser__follow {
+  display: flex;
+}
+
+.suggestedUser__user > h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.suggestedUser__user > span {
+  font-size: 0.85rem;
+  color: gray;
+  font-weight: normal;
+}
+
+.suggestedUser__follow {
+  display: flex;
+}
+
+.suggestedUser__follow > h4 {
+  font-size: 0.8rem;
+  color: #0095f6;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  margin-left: 105px;
+  padding-top: 10px;
 }

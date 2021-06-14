@@ -26,9 +26,31 @@ const Sidebar = () => {
                <h4>Suggestions For You</h4>
                <span>See All</span>
            </div>
-           <SuggestedUser />
-            
-            {/* Footer */}
+           <SuggestedUser username="LeonNoel" follow="Follows You"/>
+           <SuggestedUser username="ElonMusk" follow="Follows You"/>
+           <SuggestedUser username="BillGates" follow="Follows You"/>
+           <SuggestedUser username="KanyeW" follow="Follows You"/>
+           <SuggestedUser username="ClemenM" follow="Follows You"/>
+    
+            <div className="sidebar__footer">
+                <div className="sidebar__footerMenu">
+                    <li className="footer__link">About</li>
+                    <li className="footer__link">Help</li>
+                    <li className="footer__link">Press</li>
+                    <li className="footer__link">API</li>
+                    <li className="footer__link">Jobs</li>
+                    <li className="footer__link">Privacy</li>
+                    <li className="footer__link">Terms</li>
+                    <li className="footer__link">Locations</li>
+                    <li className="footer__link">Top Accounts</li>
+                    <li className="footer__link">Hashtags</li>
+                    <li className="footer__link">Language</li>
+                </div>
+                <div className="sidebar__footerSignature">
+                    <span>© 2021 INSTAGRAM FROM FACEBOOK FAKE</span>
+                </div>
+
+            </div>
 
 
         </div>

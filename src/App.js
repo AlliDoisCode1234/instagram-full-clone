@@ -218,8 +218,7 @@ const signIn = (event) => {
             <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>Sign Up</Button>
           </div>
         )}
-      </div>
-      
+      </div> 
       <div className="app__posts">
           <div className="app__postsLeft">
             {

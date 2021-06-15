@@ -3,6 +3,11 @@ import './ImageUpload.css'
 import Button from '@material-ui/core/Button';
 import { storage, db  } from '../firebase';
 import firebase from "firebase";
+import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
+import AddSharpIcon from '@material-ui/icons/AddSharp';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import Avatar from "@material-ui/core/Avatar"
 
 const ImageUpload = ({username}) => {
     const [caption, setCaption] = useState('');
@@ -60,13 +65,31 @@ const ImageUpload = ({username}) => {
 
     return (
         <div className="imageUpload">
-            <progress className="imageUpload__progress" value={progress} max="100" />
-            <input type="text" placeholder="Enter a caption." value={caption} onChange={event => setCaption(event.target.value)} />
-            <input type="file" onChange={handleChange} />
-            <Button onClick={handleUpload}>
-                Upload
-            </Button>
+
+            <div className="imageUpload__top">
+                <progress className="imageUpload__progress" value={progress} max="100" />
+                <input className="imageUpload__caption" type="text" placeholder="Enter a caption." value={caption} onChange={event => setCaption(event.target.value)} />
+                <input className="imageUpload__file" type="file" onChange={handleChange} />
+                <Button 
+                    className="imageUpload__buttons" 
+                    onClick={handleUpload}
+                    >
+                    Upload
+                </Button>
+            </div>
+            <div className="imageUpload__bottom">
+                <HomeIcon />
+                <SearchIcon />
+                <AddSharpIcon />
+                <FavoriteBorderIcon />
+                <Avatar 
+                        className="post__avatar"
+                        alt="JosiahJames"
+                        src="/static/images/avatar/1/jpg"
+                />
+            </div>
         </div>
+
     )
 }
 

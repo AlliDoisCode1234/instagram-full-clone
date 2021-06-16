@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { Input } from '@material-ui/core';
-import ImageUpload from './components/ImageUpload'
 // import InstagramEmbed from 'react-instagram-embed';
 import Sidebar from './components/Sidebar'
+import Footer from './components/Footer';
 
 
 
@@ -247,12 +247,9 @@ const signIn = (event) => {
         onFailure={() => {}}
       /> */}
 
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ): (
-        <h3>Sorry you need to login to upload</h3>
-      )}
+      
 
+      <Footer />
   
 
     </div>

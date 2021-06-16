@@ -1,0 +1,13 @@
+.footer__menu {
+  display: flex;
+  justify-content: space-evenly;
+  /* border-top: 1px solid gray; */
+  padding: 0.8% 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: black;
+  text-align: center;
+}

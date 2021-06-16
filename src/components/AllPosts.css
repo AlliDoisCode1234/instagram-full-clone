@@ -1,0 +1,10 @@
+.allPosts__posts {
+  background-color: rgb(250, 250, 250);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.allPosts__postsLeft {
+  margin-left: 20px;
+}

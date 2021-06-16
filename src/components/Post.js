@@ -4,6 +4,7 @@ import Avatar from "@material-ui/core/Avatar"
 import { db } from "../firebase";
 import firebase from "firebase";
 
+
 const Post = ({ postId, user, imageURL, username, caption }) => {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 // import Post from "./components/Post"
-import { db } from "./firebase"
+// import { db } from "./firebase"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import { makeStyles } from '@material-ui/core/styles';
 // import Modal from '@material-ui/core/Modal';
 // import Button from '@material-ui/core/Button';
@@ -12,7 +13,10 @@ import { db } from "./firebase"
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Header from './components/Header';
+import CreatePost from './components/CreatePost';
+// import Header from './components/Header';
 import AllPosts from './components/AllPosts';
+import Login from './components/Login';
 
 
 
@@ -49,7 +53,7 @@ function App() {
   // getModalStyle is not a pure function, we roll the style only on the first render
   // const [modalStyle] = React.useState(getModalStyle);
 
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
   // const [open, setOpen] = useState(false);
   // const [openSignIn, setOpenSignIn] = useState(false);
   // const [username, setUsername] = useState('');
@@ -83,29 +87,29 @@ function App() {
 
 
   // Get Posts from DB
-  useEffect(() => {
-    // this is where the code runs
-    // once when the app loads
-    // and every time posts changes
-    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
-      // every time a new post is added, this code fires...
-      // takes a "snapshot" of the collection and changes
+  // useEffect(() => {
+  //   // this is where the code runs
+  //   // once when the app loads
+  //   // and every time posts changes
+  //   db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+  //     // every time a new post is added, this code fires...
+  //     // takes a "snapshot" of the collection and changes
 
-      // GET ALL POSTS:
-      //
-      //
-      // setPosts(snapshot.docs.map(doc => doc.data()));
+  //     // GET ALL POSTS:
+  //     //
+  //     //
+  //     // setPosts(snapshot.docs.map(doc => doc.data()));
 
-      // GET POST BY ID:
-      //
-      //
-      setPosts(snapshot.docs.map(doc => ({
-        id: doc.id,
-        post: doc.data()
-      })))
+  //     // GET POST BY ID:
+  //     //
+  //     //
+  //     setPosts(snapshot.docs.map(doc => ({
+  //       id: doc.id,
+  //       post: doc.data()
+  //     })))
 
-    })
-  }, []);
+  //   })
+  // }, []);
 
   
 
@@ -115,38 +119,33 @@ function App() {
 
   return ( 
     // BEM naming convention
-    <div className="App">
-      {/* <Header /> */}
-      <Home />
-      
-
-      
-      {/* <div className="app__posts">
-          <div className="app__postsLeft">
-            {
-              posts.map(({ id, post }) => (
-                <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageURL={post.imageURL} />
-              ))
-            }
-
-          </div>
-          <div className="app__postsRight">
-          </div>
-      </div> */}
-        {/* <AllPosts /> */}
-        {/* <Sidebar /> */}
-
-      {/* {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/">
+            <Login />
+          </Route>
+          <Route path ="/home">
+            <Header />
+            <AllPosts />
+            <Footer />
+          </Route>
+          <Route path="/create-post">
+            <CreatePost />
+          </Route>
         
-      ): (
-        <h3>Sorry you need to login to upload</h3>
-      )} */}
+          {/* {user?.displayName ? (
+            <ImageUpload username={user.displayName} />
+            
+          ): (
+            <h3>Sorry you need to login to upload</h3>
+          )} */}
+          
+        </Switch>
+    
 
-      <Footer />
-  
-
-    </div>
+      </div>
+    </Router>
   );
 }
 

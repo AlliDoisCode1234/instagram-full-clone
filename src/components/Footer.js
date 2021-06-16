@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Footer.css'
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import AddSharpIcon from '@material-ui/icons/AddSharp';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Avatar from "@material-ui/core/Avatar"
-import CloseIcon from '@material-ui/icons/Close';
-import styled from 'styled-components';
+// import CloseIcon from '@material-ui/icons/Close';
+// import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
-    const [open, setOpen] = useState(true);
+    
 
     
     return (
@@ -18,16 +19,9 @@ const Footer = () => {
             <div className="footer__menu">
                 <HomeIcon className="footer__menuItem" />
                 <SearchIcon className="footer__menuItem" />
-                <PlusIconContainer onClick={() => setOpen(true)}>
+                <Link to='/create-post'>
                     <AddSharpIcon className="footer__menuItem" />
-                </PlusIconContainer>
-                <ImageUploadToggle status={open}>
-                    <CloseContainer status={open}>
-                        <Close onClick={() => setOpen(false)} />
-                    </CloseContainer>
-                </ImageUploadToggle>
-                
-                
+                </Link>
                 <FavoriteBorderIcon className="footer__menuItem" />
                 <Avatar 
                         className="footer__menuItem"
@@ -41,33 +35,33 @@ const Footer = () => {
 
 export default Footer
 
-const CloseContainer = styled.div`
-    display: flex;
-    justify-content: flex-end;
+// const CloseContainer = styled.div`
+//     display: flex;
+//     justify-content: flex-end;
     
 
-`
-const Close = styled(CloseIcon)`
-    cursor: pointer;
+// `
+// const Close = styled(CloseIcon)`
+//     cursor: pointer;
     
     
-`
+// `
 
-const PlusIconContainer = styled.div`
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+// const PlusIconContainer = styled.div`
+//     display: flex;
+//     align-items: center;
+//     cursor: pointer;
 
-`
+// `
 
-const ImageUploadToggle = styled.div`
-    transform: ${props => props.status ? 'translateX(0)' : 'translateX(100%)'};
-    transition: transform 0.2s ease-in;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    padding: 20px;
+// const ImageUploadToggle = styled.div`
+//     transform: ${props => props.status ? 'translateX(0)' : 'translateX(100%)'};
+//     transition: transform 0.2s ease-in;
+//     position: fixed;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     padding: 20px;
 
 
-`
+// `

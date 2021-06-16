@@ -3,6 +3,7 @@ import "./AllPosts.css"
 import { db } from "../firebase"
 import Post from "./Post"
 import Sidebar from './Sidebar'
+import ImageUpload from './ImageUpload'
 
 const AllPosts = () => {
 
@@ -48,6 +49,12 @@ const AllPosts = () => {
                 <div className="app__postsRight">
                     <Sidebar />
                 </div>
+                {user?.displayName ? (
+                        <ImageUpload username={user.displayName} />
+            
+                    ): (
+                        <h3>Sorry you need to login to upload</h3>
+                    )}
             </div>
         </div>
     )

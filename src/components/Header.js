@@ -5,6 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Input } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 // import { auth } from "./firebase"
 
 
@@ -169,11 +170,13 @@ const Header = () => {
             </Modal>
 
             <div className="header__header">
-                <img 
-                    src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
-                    alt="app logo" 
-                    className="header__headerImage" 
-                />
+                <Link to='/'>
+                  <img 
+                      src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" 
+                      alt="app logo" 
+                      className="header__headerImage" 
+                  />
+                </Link>
 
                 {user ? (
                     <Button variant="outlined" color="primary" onClick={() => auth.signOut()}>Log Out</Button>

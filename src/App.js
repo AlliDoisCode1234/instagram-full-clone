@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import './App.css';
 // import Post from "./components/Post"
 // import { db } from "./firebase"
+import { auth } from './firebase';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import { makeStyles } from '@material-ui/core/styles';
 // import Modal from '@material-ui/core/Modal';
@@ -11,12 +12,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import InstagramEmbed from 'react-instagram-embed';
 // import Sidebar from './components/Sidebar'
 import Footer from './components/Footer';
-import Home from './components/Home';
+// import Home from './components/Home';
 import Header from './components/Header';
 import CreatePost from './components/CreatePost';
 // import Header from './components/Header';
 import AllPosts from './components/AllPosts';
 import Login from './components/Login';
+import { useStateValue } from './StateProvider';
 
 
 
@@ -48,6 +50,35 @@ import Login from './components/Login';
 
 
 function App() {
+
+  const [{}, dispatch] = useStateValue();
+
+    useEffect(() => {
+      //
+      // will only run once when the app component loads... 
+      //
+
+      auth.onAuthStateChanged(authUser => {
+        console.log('THE USER IS >>>', authUser);
+
+        if (authUser) {
+          // the user just logged in / the user was logged in
+
+          dispatch({
+            type: 'SET_USER',
+            user: authUser
+          })
+
+        } else {
+          // the user is logged out
+
+          dispatch({
+            type: 'SET_USER',
+            user: null
+          })
+        }
+      })   
+    }, [])
   // const classes = useStyles();
 
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -122,28 +153,24 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/">
+          <Route path ="/login">
             <Login />
-          </Route>
-          <Route path ="/home">
-            <Header />
-            <AllPosts />
-            <Footer />
           </Route>
           <Route path="/create-post">
             <CreatePost />
           </Route>
-        
+          <Route path="/">
+            <Header />
+            <AllPosts />
+            <Footer /> 
+          </Route>      
           {/* {user?.displayName ? (
             <ImageUpload username={user.displayName} />
             
           ): (
             <h3>Sorry you need to login to upload</h3>
-          )} */}
-          
+          )} */}     
         </Switch>
-    
-
       </div>
     </Router>
   );
